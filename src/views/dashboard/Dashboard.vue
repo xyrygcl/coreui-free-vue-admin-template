@@ -1,12 +1,7 @@
 <script setup>
-import avatar1 from '@/assets/images/avatars/1.jpg'
-import avatar2 from '@/assets/images/avatars/2.jpg'
-import avatar3 from '@/assets/images/avatars/3.jpg'
-import avatar4 from '@/assets/images/avatars/4.jpg'
-import avatar5 from '@/assets/images/avatars/5.jpg'
-import avatar6 from '@/assets/images/avatars/6.jpg'
 import MainChart from './MainChart.vue'
 
+// Progress bar mock data
 const progressGroupExample1 = [
   { title: 'Monday', value1: 34, value2: 78 },
   { title: 'Tuesday', value1: 56, value2: 94 },
@@ -16,109 +11,41 @@ const progressGroupExample1 = [
   { title: 'Saturday', value1: 53, value2: 82 },
   { title: 'Sunday', value1: 9, value2: 69 },
 ]
+
 const progressGroupExample2 = [
-  { title: 'Male', icon: 'cil-user', value: 53 },
-  { title: 'Female', icon: 'cil-user-female', value: 43 },
+  { title: 'Male', value: 53 },
+  { title: 'Female', value: 43 },
 ]
+
 const progressGroupExample3 = [
-  {
-    title: 'Organic Search',
-    icon: 'cib-google',
-    percent: 56,
-    value: '191,235',
-  },
-  { title: 'Facebook', icon: 'cib-facebook', percent: 15, value: '51,223' },
-  { title: 'Twitter', icon: 'cib-twitter', percent: 11, value: '37,564' },
-  { title: 'LinkedIn', icon: 'cib-linkedin', percent: 8, value: '27,319' },
+  { title: 'Organic Search', percent: 56, value: '191,235' },
+  { title: 'Facebook', percent: 15, value: '51,223' },
+  { title: 'Twitter', percent: 11, value: '37,564' },
+  { title: 'LinkedIn', percent: 8, value: '27,319' },
 ]
+
+// Table mock data without local avatars
 const tableExample = [
   {
-    avatar: { src: avatar1, status: 'success' },
-    user: {
-      name: 'Yiorgos Avraamu',
-      new: true,
-      registered: 'Jan 1, 2023',
-    },
+    user: { name: 'Yiorgos Avraamu', new: true, registered: 'Jan 1, 2023' },
     country: { name: 'USA', flag: 'cif-us' },
-    usage: {
-      value: 50,
-      period: 'Jun 11, 2023 - Jul 10, 2023',
-      color: 'success',
-    },
+    usage: { value: 50, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'success' },
     payment: { name: 'Mastercard', icon: 'cib-cc-mastercard' },
     activity: '10 sec ago',
   },
   {
-    avatar: { src: avatar2, status: 'danger' },
-    user: {
-      name: 'Avram Tarasios',
-      new: false,
-      registered: 'Jan 1, 2023',
-    },
+    user: { name: 'Avram Tarasios', new: false, registered: 'Jan 1, 2023' },
     country: { name: 'Brazil', flag: 'cif-br' },
-    usage: {
-      value: 22,
-      period: 'Jun 11, 2023 - Jul 10, 2023',
-      color: 'info',
-    },
+    usage: { value: 22, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'info' },
     payment: { name: 'Visa', icon: 'cib-cc-visa' },
     activity: '5 minutes ago',
   },
   {
-    avatar: { src: avatar3, status: 'warning' },
     user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2023' },
     country: { name: 'India', flag: 'cif-in' },
-    usage: {
-      value: 74,
-      period: 'Jun 11, 2023 - Jul 10, 2023',
-      color: 'warning',
-    },
+    usage: { value: 74, period: 'Jun 11, 2023 - Jul 10, 2023', color: 'warning' },
     payment: { name: 'Stripe', icon: 'cib-cc-stripe' },
     activity: '1 hour ago',
-  },
-  {
-    avatar: { src: avatar4, status: 'secondary' },
-    user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2023' },
-    country: { name: 'France', flag: 'cif-fr' },
-    usage: {
-      value: 98,
-      period: 'Jun 11, 2023 - Jul 10, 2023',
-      color: 'danger',
-    },
-    payment: { name: 'PayPal', icon: 'cib-cc-paypal' },
-    activity: 'Last month',
-  },
-  {
-    avatar: { src: avatar5, status: 'success' },
-    user: {
-      name: 'Agapetus Tadeáš',
-      new: true,
-      registered: 'Jan 1, 2023',
-    },
-    country: { name: 'Spain', flag: 'cif-es' },
-    usage: {
-      value: 22,
-      period: 'Jun 11, 2023 - Jul 10, 2023',
-      color: 'primary',
-    },
-    payment: { name: 'Google Wallet', icon: 'cib-cc-apple-pay' },
-    activity: 'Last week',
-  },
-  {
-    avatar: { src: avatar6, status: 'danger' },
-    user: {
-      name: 'Friderik Dávid',
-      new: true,
-      registered: 'Jan 1, 2023',
-    },
-    country: { name: 'Poland', flag: 'cif-pl' },
-    usage: {
-      value: 43,
-      period: 'Jun 11, 2023 - Jul 10, 2023',
-      color: 'success',
-    },
-    payment: { name: 'Amex', icon: 'cib-cc-amex' },
-    activity: 'Last week',
   },
 ]
 </script>
@@ -134,20 +61,6 @@ const tableExample = [
               <CCol :sm="5">
                 <h4 id="traffic" class="card-title mb-0">Traffic</h4>
                 <div class="small text-body-secondary">January - July 2023</div>
-              </CCol>
-              <CCol :sm="7" class="d-none d-md-block">
-                <CButton color="primary" class="float-end">
-                  <CIcon icon="cil-cloud-download" />
-                </CButton>
-                <CButtonGroup
-                  class="float-end me-3"
-                  role="group"
-                  aria-label="Basic outlined example"
-                >
-                  <CButton color="secondary" variant="outline">Day</CButton>
-                  <CButton color="secondary" variant="outline" active>Month</CButton>
-                  <CButton color="secondary" variant="outline">Year</CButton>
-                </CButtonGroup>
               </CCol>
             </CRow>
             <CRow>
@@ -182,43 +95,23 @@ const tableExample = [
             <CTable align="middle" class="mb-0 border" hover responsive>
               <CTableHead class="text-nowrap">
                 <CTableRow>
-                  <CTableHeaderCell class="bg-body-secondary text-center">Avatar</CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary"> User </CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary text-center">Country</CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary"> Usage </CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary text-center">Payment Method</CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary"> Activity </CTableHeaderCell>
+                  <CTableHeaderCell class="bg-body-secondary text-center">User</CTableHeaderCell>
+                  <CTableHeaderCell class="bg-body-secondary">Country</CTableHeaderCell>
+                  <CTableHeaderCell class="bg-body-secondary">Usage</CTableHeaderCell>
+                  <CTableHeaderCell class="bg-body-secondary text-center">Payment</CTableHeaderCell>
+                  <CTableHeaderCell class="bg-body-secondary">Activity</CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
               <CTableBody>
                 <CTableRow v-for="item in tableExample" :key="item.user.name">
-                  <CTableDataCell class="text-center">
-                    <CAvatar size="md" :src="item.avatar.src" :status="item.avatar.status" />
-                  </CTableDataCell>
+                  <CTableDataCell>{{ item.user.name }}</CTableDataCell>
+                  <CTableDataCell class="text-center">{{ item.country.name }}</CTableDataCell>
                   <CTableDataCell>
-                    <div>{{ item.user.name }}</div>
-                    <div class="small text-body-secondary text-nowrap">
-                      <span>{{ item.user.new ? 'New' : 'Recurring' }}</span> |
-                      {{ item.user.registered }}
-                    </div>
+                    <div>{{ item.usage.value }}%</div>
+                    <div class="text-body-secondary small">{{ item.usage.period }}</div>
                   </CTableDataCell>
-                  <CTableDataCell class="text-center">
-                    <CIcon size="xl" :name="item.country.flag" :title="item.country.name" />
-                  </CTableDataCell>
-                  <CTableDataCell>
-                    <div class="d-flex justify-content-between align-items-baseline">
-                      <div class="fw-semibold">{{ item.usage.value }}%</div>
-                      <div class="text-nowrap text-body-secondary small ms-3">{{ item.usage.period }}</div>
-                    </div>
-                    <CProgress thin :color="item.usage.color" :value="item.usage.value" />
-                  </CTableDataCell>
-                  <CTableDataCell class="text-center">
-                    <CIcon size="xl" :name="item.payment.icon" />
-                  </CTableDataCell>
-                  <CTableDataCell>
-                    <div class="small text-body-secondary">Last login</div>
-                    <div class="fw-semibold text-nowrap">{{ item.activity }}</div>
-                  </CTableDataCell>
+                  <CTableDataCell class="text-center">{{ item.payment.name }}</CTableDataCell>
+                  <CTableDataCell>{{ item.activity }}</CTableDataCell>
                 </CTableRow>
               </CTableBody>
             </CTable>
