@@ -6,17 +6,19 @@ import autoprefixer from 'autoprefixer'
 export default defineConfig(() => {
   return {
     plugins: [vue()],
+
     base: './',
+
     css: {
       postcss: {
         plugins: [
-          autoprefixer({}), // add options if needed
+          autoprefixer({}),
         ],
       },
     },
+
     resolve: {
       alias: [
-        // webpack path resolve to vitejs
         {
           find: /^~(.*)$/,
           replacement: '$1',
@@ -27,16 +29,35 @@ export default defineConfig(() => {
         },
         {
           find: '@',
-          replacement: path.resolve(__dirname, '/src'),
+          replacement: path.resolve(__dirname, './src'),
         },
       ],
-      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.scss'],
+
+      extensions: [
+        '.mjs',
+        '.js',
+        '.ts',
+        '.jsx',
+        '.tsx',
+        '.json',
+        '.vue',
+        '.scss',
+      ],
     },
+
     server: {
+      host: '0.0.0.0',
       port: 3000,
+
       proxy: {
         // https://vitejs.dev/config/server-options.html
       },
+    },
+
+    preview: {
+      host: '0.0.0.0',
+      port: process.env.PORT || 8080,
+      allowedHosts: true,
     },
   }
 })
