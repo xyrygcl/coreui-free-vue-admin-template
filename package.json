@@ -12,10 +12,10 @@
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
-    "dev": "vite --force",
+    "dev": "vite --host 0.0.0.0 --port 4173",
     "build": "vite build",
     "lint": "eslint",
-    "preview": "vite preview"
+    "preview": "vite preview --host 0.0.0.0 --port $PORT"
   },
   "dependencies": {
     "@coreui/chartjs": "^4.2.0",
