@@ -2,19 +2,10 @@
 /**
  * App.vue - Main Application Component
  *
- * This is the root component of the CoreUI Free Vue Admin Template.
- * It handles theme initialization and provides the router-view for all routes.
- *
- * Key responsibilities:
- * - Theme detection from URL parameters
- * - Theme persistence with localStorage
- * - Router view rendering for SPA navigation
- *
- * @component
+ * Root component for the app
  */
 import { onBeforeMount } from 'vue'
 import { useColorModes } from '@coreui/vue'
-
 import { useThemeStore } from '@/stores/theme.js'
 
 // Initialize CoreUI color modes with local storage key
@@ -48,9 +39,9 @@ onBeforeMount(() => {
   <router-view />
 </template>
 
-<style lang="scss">
-// Import Main styles for this application
-@use 'styles/style';
-// We use those styles to show code examples, you should remove them in your application.
-@use 'styles/examples';
+<style>
+/* 改成普通 CSS 引入，全局样式文件放在 src/assets/style.css */
+@import '@/assets/style.css';
+
+/* 示例样式可以移除或单独保留，如果需要可以手动复制到 style.css */
 </style>
