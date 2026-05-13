@@ -5,24 +5,13 @@ import DefaultLayout from '@/layouts/DefaultLayout'
 const routes = [
   {
     path: '/',
+    name: 'Home',
     component: DefaultLayout,
-    redirect: '/dashboard',
     children: [
       {
-        path: '/dashboard',
+        path: '',
+        name: 'Dashboard',
         component: () => import('@/views/dashboard/Dashboard.vue'),
-      },
-      {
-        path: '/upload',
-        component: () => import('@/views/pages/Upload.vue'),
-      },
-      {
-        path: '/courses',
-        component: () => import('@/views/pages/CourseList.vue'),
-      },
-      {
-        path: '/profile',
-        component: () => import('@/views/pages/Profile.vue'),
       },
     ],
   },
