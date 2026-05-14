@@ -33,15 +33,24 @@ const menuItems = [
         </RouterLink>
       </CNavItem>
     </CSidebarNav>
+
+    <!-- 新增：折叠按钮（固定在底部，右上角的小标） -->
+    <CSidebarToggler
+      class="sidebar-toggler"
+      @click="sidebar.toggleUnfoldable()"
+    />
   </CSidebar>
 </template>
 
 <style scoped>
 .sidebar-custom {
   width: 240px;
-  min-height: 100vh;
-  background: #1e1e1e; /* 黑灰色 */
+  min-height: 100vh;           /* 确保占满整个视口高度 */
+  height: 100%;                 /* 修复某些情况下的高度溢出 */
+  background: #1a1a1a !important;  /* 接近黑色的深灰，加 !important 防止覆盖 */
   border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
 }
 
 /* 顶部 Logo */
@@ -51,6 +60,7 @@ const menuItems = [
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
 }
 
 /* 标题 */
@@ -61,9 +71,11 @@ const menuItems = [
   font-weight: 700;
 }
 
-/* 菜单区域 */
+/* 菜单区域（中间部分，可滚动） */
 .nav-wrapper {
-  padding-top: 16px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 0;
 }
 
 /* 链接 */
@@ -73,7 +85,7 @@ const menuItems = [
   margin: 4px 12px;
   padding: 12px 16px;
   border-radius: 10px;
-  color: #ffffff;
+  color: #ffffff !important;   /* 文字强制白色 */
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -81,16 +93,34 @@ const menuItems = [
 /* 图标 */
 .menu-icon {
   margin-right: 12px;
+  color: #ffffff !important;   /* 图标强制白色 */
 }
 
 /* hover */
 .custom-link:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
 }
 
 /* 当前激活 */
 .router-link-active {
-  background: rgba(99, 102, 241, 0.3); /* 保留少许紫色点缀，或改为浅灰色 */
+  background: rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+}
+
+/* 折叠按钮（右上角小标） */
+.sidebar-toggler {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-toggler:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 </style>
