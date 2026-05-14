@@ -8,13 +8,13 @@ import AppSidebar from '@/components/AppSidebar.vue'
     <!-- 左侧菜单 -->
     <AppSidebar />
 
-    <!-- 右侧主体 -->
-    <div class="wrapper d-flex flex-column min-vh-100">
+    <!-- 右侧区域 -->
+    <div class="wrapper">
       <!-- 顶部导航 -->
       <AppHeader />
 
       <!-- 页面内容 -->
-      <main class="body flex-grow-1 px-4 py-4">
+      <main class="body">
         <router-view />
       </main>
     </div>
@@ -23,26 +23,48 @@ import AppSidebar from '@/components/AppSidebar.vue'
 
 <style scoped>
 .layout {
-  background: #1f2937;
+  background: #111827;
   min-height: 100vh;
 }
 
+/* 右侧整体 */
 .wrapper {
-  margin-left: 256px;
-  background: #1f2937;
+  background: #111827;
   min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-x: hidden;
 }
 
+/* 页面主体 */
 .body {
-  background: #1f2937;
+  flex: 1;
+
+  background: #111827;
   color: #ffffff;
-  min-height: 100vh;
+
+  padding: 24px;
+
+  overflow-x: hidden;
+}
+
+/* 桌面端 */
+@media (min-width: 992px) {
+  .wrapper {
+    margin-left: 256px;
+  }
 }
 
 /* 移动端 */
 @media (max-width: 991px) {
   .wrapper {
     margin-left: 0;
+  }
+
+  .body {
+    padding: 16px;
   }
 }
 </style>
