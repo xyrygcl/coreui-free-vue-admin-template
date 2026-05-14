@@ -1,16 +1,12 @@
-<script setup></script>
-
 <template>
-  <CContainer fluid class="bg-white p-4">
-    <CCard>
+  <Container fluid class="p-4">
+    <Card class="bg-dark text-light border-0 shadow">
       <CCardBody>
-        <h4 class="card-title">欢迎使用沃转课</h4>
-        <p class="text-secondary">CoreUI 模板已成功清理</p>
+        <h3>欢迎使用沃转课</h3>
+        <p class="text-medium-emphasis">
+          CoreUI 模板已成功清理
+        </p>
       </CCardBody>
-    </CCard>
-  </CContainer>
+    </Card>
+  </Container>
 </template>
-
-<style scoped>
-.bg-white { background-color: #ffffff; }
-</style>
