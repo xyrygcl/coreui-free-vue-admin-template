@@ -19,9 +19,7 @@ const menuItems = [
   >
     <!-- Logo -->
     <CSidebarBrand class="sidebar-brand">
-      <h3 class="logo-text">
-        沃转课
-      </h3>
+      <!-- 原来此处显示 "沃转课" 文字，现已删除 -->
     </CSidebarBrand>
 
     <!-- 菜单 -->
@@ -68,7 +66,7 @@ const menuItems = [
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-/* 标题 */
+/* 标题（已无文字，但样式保留） */
 .logo-text {
   margin: 0;
 
