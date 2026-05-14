@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 const routes = [
@@ -9,7 +8,7 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/dashboard',
+        redirect: '/upload',   // 改为 upload 页面
       },
       {
         path: 'dashboard',
