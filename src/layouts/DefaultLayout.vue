@@ -24,10 +24,11 @@ import AppSidebar from '@/components/AppSidebar.vue'
 <style>
 .wrapper {
   margin-left: 256px;
-  background: #f4f5f7;
+  background: #1f2937;
 }
 
 .body {
   min-height: 100vh;
+  background: #1f2937;
 }
 </style>
