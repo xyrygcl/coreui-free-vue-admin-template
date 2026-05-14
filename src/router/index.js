@@ -5,7 +5,6 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue'
 const routes = [
   {
     path: '/',
-    name: '首页',
     component: DefaultLayout,
     redirect: '/dashboard',
 
