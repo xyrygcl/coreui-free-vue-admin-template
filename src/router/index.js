@@ -8,22 +8,22 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/upload',   // 默认跳转到上传页面
+        redirect: '/upload',
       },
-      // 删除 dashboard 路由（主页）
+      // 主页路由已删除
       {
         path: 'upload',
-        name: '立即上传',
+        name: 'Upload',
         component: () => import('@/views/pages/Upload.vue'),
       },
       {
         path: 'courses',
-        name: '我的作品',
+        name: 'Courses',
         component: () => import('@/views/pages/Courses.vue'),
       },
       {
         path: 'profile',
-        name: '个人',
+        name: 'Profile',
         component: () => import('@/views/pages/Profile.vue'),
       },
     ],
