@@ -9,12 +9,7 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/dashboard',
-      },
-      {
-        path: 'dashboard',
-        name: '主页',
-        component: () => import('@/views/dashboard/Dashboard.vue'),
+        redirect: '/upload',     // 默认跳转到“立即上传”页面（可改为 /courses，根据需求）
       },
       {
         path: 'upload',
@@ -25,11 +20,6 @@ const routes = [
         path: 'courses',
         name: '我的作品',
         component: () => import('@/views/pages/Courses.vue'),
-      },
-      {
-        path: 'profile',
-        name: '个人',
-        component: () => import('@/views/pages/Profile.vue'),
       },
     ],
   },
