@@ -5,10 +5,8 @@ import { RouterLink } from 'vue-router'
 const sidebar = useSidebarStore()
 
 const menuItems = [
-  { title: '主页', icon: 'cil-home', to: '/dashboard' },
   { title: '立即上传', icon: 'cil-cloud-upload', to: '/upload' },
   { title: '我的作品', icon: 'cil-library', to: '/courses' },
-  { title: '个人', icon: 'cil-user', to: '/profile' },
 ]
 </script>
 
