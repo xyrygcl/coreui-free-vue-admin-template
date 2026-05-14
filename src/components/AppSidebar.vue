@@ -2,9 +2,10 @@
 import { useSidebarStore } from '@/stores/sidebar.js'
 import { RouterLink } from 'vue-router'
 
-const sidebarStore = useSidebarStore()
+const sidebar = useSidebarStore()
 
 const menuItems = [
+  { title: '主页', icon: 'cil-home', to: '/dashboard' },
   { title: '立即上传', icon: 'cil-cloud-upload', to: '/upload' },
   { title: '我的作品', icon: 'cil-library', to: '/courses' },
   { title: '个人', icon: 'cil-user', to: '/profile' },
@@ -12,124 +13,107 @@ const menuItems = [
 </script>
 
 <template>
-  <div class="app-sidebar-override">
-    <CSidebar
-      :unfoldable="sidebarStore.unfoldable"
-      :visible="sidebarStore.visible"
-      @visible-change="(val) => sidebarStore.toggleVisible(val)"
-    >
-      <!-- Logo 区域 -->
-      <CSidebarBrand class="sidebar-brand">
-        <h3 class="logo-text">沃转课</h3>
-      </CSidebarBrand>
+  <CSidebar
+    class="sidebar-custom"
+    :unfoldable="sidebar.unfoldable"
+    :visible="sidebar.visible"
+    @visible-change="(value) => sidebar.toggleVisible(value)"
+  >
+    <!-- Logo -->
+    <CSidebarBrand class="sidebar-brand">
+      <h3 class="logo-text">
+        沃转课
+      </h3>
+    </CSidebarBrand>
 
-      <!-- 菜单列表 -->
-      <CSidebarNav class="nav-wrapper">
-        <CNavItem v-for="item in menuItems" :key="item.title">
-          <RouterLink :to="item.to" class="nav-link custom-link" @click="() => {}">
-            <CIcon :icon="item.icon" class="menu-icon" />
-            <span class="menu-label">{{ item.title }}</span>
-          </RouterLink>
-        </CNavItem>
-      </CSidebarNav>
+    <!-- 菜单 -->
+    <CSidebarNav class="nav-wrapper">
+      <CNavItem
+        v-for="item in menuItems"
+        :key="item.title"
+      >
+        <RouterLink
+          :to="item.to"
+          class="nav-link custom-link"
+        >
+          <CIcon
+            :icon="item.icon"
+            class="menu-icon"
+          />
 
-      <!-- 折叠/展开按钮（必须放在侧边栏内部） -->
-      <CSidebarToggler
-        class="sidebar-toggler"
-        @click="sidebarStore.toggleUnfoldable()"
-      />
-    </CSidebar>
-  </div>
+          <span>
+            {{ item.title }}
+          </span>
+        </RouterLink>
+      </CNavItem>
+    </CSidebarNav>
+  </CSidebar>
 </template>
 
 <style scoped>
-/* 强制侧边栏样式覆盖所有 CoreUI 默认值 */
-.app-sidebar-override :deep(.sidebar) {
-  background-color: #000000 !important;  /* 纯黑背景 */
-  width: 280px !important;               /* 加宽侧边栏 */
-  min-width: 280px !important;
-  max-width: 280px !important;
-  height: 100vh !important;              /* 占满视口高度 */
-  position: fixed !important;            /* 固定定位，不随页面滚动 */
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
+.sidebar-custom {
+  width: 240px;
+  min-height: 100vh;
+
+  background: #111827;
+  border-right: 1px solid rgba(255,255,255,0.06);
 }
 
-/* 品牌区域 */
-.app-sidebar-override :deep(.sidebar-brand) {
+/* 顶部 Logo */
+.sidebar-brand {
   height: 64px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #2a2a2a;
-  flex-shrink: 0;
+
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
+/* 标题 */
 .logo-text {
   margin: 0;
-  color: #ffffff !important;
-  font-size: 28px;
+
+  color: #ffffff;
+
+  font-size: 30px;
   font-weight: 700;
-  letter-spacing: 1px;
 }
 
-/* 菜单容器 */
-.app-sidebar-override :deep(.sidebar-nav) {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 0;
+/* 菜单区域 */
+.nav-wrapper {
+  padding-top: 16px;
 }
 
-/* 每个菜单项 */
-.app-sidebar-override :deep(.nav-link) {
-  display: flex !important;
+/* 链接 */
+.custom-link {
+  display: flex;
   align-items: center;
-  margin: 4px 12px !important;
-  padding: 12px 16px !important;
+
+  margin: 4px 12px;
+  padding: 12px 16px;
+
   border-radius: 10px;
-  color: #ffffff !important;
+
+  color: #ffffff;
   text-decoration: none;
-  transition: all 0.2s;
+
+  transition: all 0.2s ease;
 }
 
+/* 图标 */
 .menu-icon {
   margin-right: 12px;
-  color: #ffffff !important;
-  font-size: 1.2rem;
 }
 
-.menu-label {
-  color: #ffffff !important;
-  font-size: 15px;
-  font-weight: 500;
+/* hover */
+.custom-link:hover {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
 }
 
-.app-sidebar-override :deep(.nav-link:hover) {
-  background: rgba(255,255,255,0.12) !important;
-}
-
-.app-sidebar-override :deep(.router-link-active) {
-  background: rgba(99,102,241,0.4) !important;
-}
-
-/* 折叠按钮 */
-.app-sidebar-override :deep(.sidebar-toggler) {
-  background: transparent;
-  border: none;
-  color: #ffffff !important;
-  padding: 16px;
-  cursor: pointer;
-  flex-shrink: 0;
-  border-top: 1px solid #2a2a2a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.app-sidebar-override :deep(.sidebar-toggler:hover) {
-  background: rgba(255,255,255,0.1);
+/* 当前激活 */
+.router-link-active {
+  background: rgba(99,102,241,0.22);
 }
 </style>
