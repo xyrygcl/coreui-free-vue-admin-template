@@ -34,10 +34,6 @@ const menuItems = [
 </template>
 
 <style scoped>
-.bg-dark {
-  background-color: #2c2c2c !important;
-}
-.text-light {
-  color: #ffffff !important;
-}
+.bg-dark { background-color: #2c2c2c !important; }
+.text-light { color: #ffffff !important; }
 </style>
