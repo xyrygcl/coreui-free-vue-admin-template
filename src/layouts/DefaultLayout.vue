@@ -25,42 +25,32 @@ import AppSidebar from '@/components/AppSidebar.vue'
 /* 整体布局 */
 .layout {
   display: flex;
-
   min-height: 100vh;
   width: 100%;
-
-  background: #111827;
-
+  background: #f0f2f5; /* 整体背景改为浅灰（可选） */
   overflow-x: hidden;
 }
 
 /* 右侧区域 */
 .wrapper {
   flex: 1;
-
   display: flex;
   flex-direction: column;
-
   min-width: 0;
-
-  background: #111827;
-
+  background: #ffffff; /* 改为白色 */
   overflow-x: hidden;
 }
 
 /* 页面主体 */
 .body {
   flex: 1;
-
   padding: 24px;
-
-  background: #111827;
-  color: #ffffff;
-
+  background: #ffffff; /* 白色背景 */
+  color: #333333;      /* 深色文字 */
   overflow-x: hidden;
 }
 
-/* 移动端 */
+/* 移动端适配 */
 @media (max-width: 991px) {
   .layout {
     flex-direction: column;
