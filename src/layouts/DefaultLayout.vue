@@ -5,9 +5,15 @@ import AppSidebar from '@/components/AppSidebar.vue'
 
 <template>
   <div class="layout">
+    <!-- 左侧菜单 -->
     <AppSidebar />
+
+    <!-- 右侧内容 -->
     <div class="wrapper">
+      <!-- 顶部 -->
       <AppHeader />
+
+      <!-- 页面主体 -->
       <main class="body">
         <router-view />
       </main>
@@ -16,35 +22,52 @@ import AppSidebar from '@/components/AppSidebar.vue'
 </template>
 
 <style scoped>
+/* 整体布局 */
 .layout {
   display: flex;
+
   min-height: 100vh;
   width: 100%;
-  background: #f0f2f5;
+
+  background: #111827;
+
+  overflow-x: hidden;
 }
 
+/* 右侧区域 */
 .wrapper {
-  margin-left: 280px;   /* 与侧边栏宽度一致，防止覆盖 */
   flex: 1;
+
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  background: #ffffff;
+
+  min-width: 0;
+
+  background: #111827;
+
+  overflow-x: hidden;
 }
 
+/* 页面主体 */
 .body {
   flex: 1;
+
   padding: 24px;
-  background: #ffffff;
-  color: #333333;
+
+  background: #111827;
+  color: #ffffff;
+
+  overflow-x: hidden;
 }
 
+/* 移动端 */
 @media (max-width: 991px) {
   .layout {
     flex-direction: column;
   }
-  .wrapper {
-    margin-left: 0;
+
+  .body {
+    padding: 16px;
   }
 }
 </style>
