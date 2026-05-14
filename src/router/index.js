@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 const routes = [
@@ -8,22 +9,26 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/upload',
+        redirect: '/dashboard',
       },
-      // 主页路由已删除
+      {
+        path: 'dashboard',
+        name: '主页',
+        component: () => import('@/views/dashboard/Dashboard.vue'),
+      },
       {
         path: 'upload',
-        name: 'Upload',
+        name: '立即上传',
         component: () => import('@/views/pages/Upload.vue'),
       },
       {
         path: 'courses',
-        name: 'Courses',
+        name: '我的作品',
         component: () => import('@/views/pages/Courses.vue'),
       },
       {
         path: 'profile',
-        name: 'Profile',
+        name: '个人',
         component: () => import('@/views/pages/Profile.vue'),
       },
     ],
