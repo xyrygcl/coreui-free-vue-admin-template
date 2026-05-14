@@ -21,29 +21,15 @@ const menuItems = [
   >
     <!-- Logo -->
     <CSidebarBrand class="sidebar-brand">
-      <h3 class="logo-text">
-        沃转课
-      </h3>
+      <h3 class="logo-text">沃转课</h3>
     </CSidebarBrand>
 
     <!-- 菜单 -->
     <CSidebarNav class="nav-wrapper">
-      <CNavItem
-        v-for="item in menuItems"
-        :key="item.title"
-      >
-        <RouterLink
-          :to="item.to"
-          class="nav-link custom-link"
-        >
-          <CIcon
-            :icon="item.icon"
-            class="menu-icon"
-          />
-
-          <span>
-            {{ item.title }}
-          </span>
+      <CNavItem v-for="item in menuItems" :key="item.title">
+        <RouterLink :to="item.to" class="nav-link custom-link">
+          <CIcon :icon="item.icon" class="menu-icon" />
+          <span>{{ item.title }}</span>
         </RouterLink>
       </CNavItem>
     </CSidebarNav>
@@ -54,28 +40,23 @@ const menuItems = [
 .sidebar-custom {
   width: 240px;
   min-height: 100vh;
-
-  background: #111827;
-  border-right: 1px solid rgba(255,255,255,0.06);
+  background: #1e1e1e; /* 黑灰色 */
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* 顶部 Logo */
 .sidebar-brand {
   height: 64px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* 标题 */
 .logo-text {
   margin: 0;
-
   color: #ffffff;
-
   font-size: 30px;
   font-weight: 700;
 }
@@ -89,15 +70,11 @@ const menuItems = [
 .custom-link {
   display: flex;
   align-items: center;
-
   margin: 4px 12px;
   padding: 12px 16px;
-
   border-radius: 10px;
-
   color: #ffffff;
   text-decoration: none;
-
   transition: all 0.2s ease;
 }
 
@@ -108,12 +85,12 @@ const menuItems = [
 
 /* hover */
 .custom-link:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
 /* 当前激活 */
 .router-link-active {
-  background: rgba(99,102,241,0.22);
+  background: rgba(99, 102, 241, 0.3); /* 保留少许紫色点缀，或改为浅灰色 */
 }
 </style>
