@@ -1,5 +1,6 @@
 <script setup>
 import { useSidebarStore } from '@/stores/sidebar.js'
+import { RouterLink } from 'vue-router'
 
 const sidebar = useSidebarStore()
 
@@ -13,27 +14,49 @@ const menuItems = [
 
 <template>
   <CSidebar
-    class="bg-dark text-light"
     position="fixed"
+    class="sidebar-custom"
     :unfoldable="sidebar.unfoldable"
     :visible="sidebar.visible"
     @visible-change="(value) => sidebar.toggleVisible(value)"
   >
-    <CSidebarBrand class="px-3 py-4">
-      <h3 class="text-light">沃转课</h3>
+    <CSidebarBrand class="border-bottom">
+      <h3 class="m-0 text-white">沃转课</h3>
     </CSidebarBrand>
 
     <CSidebarNav>
-      <CNavItem v-for="item in menuItems" :key="item.title">
-        <CNavLink :to="item.to">
-          <CIcon :icon="item.icon" class="me-2" /> {{ item.title }}
-        </CNavLink>
+      <CNavItem
+        v-for="item in menuItems"
+        :key="item.title"
+      >
+        <RouterLink
+          :to="item.to"
+          class="nav-link custom-link"
+        >
+          <CIcon :icon="item.icon" class="me-2" />
+          {{ item.title }}
+        </RouterLink>
       </CNavItem>
     </CSidebarNav>
   </CSidebar>
 </template>
 
 <style scoped>
-.bg-dark { background-color: #2c2c2c !important; }
-.text-light { color: #ffffff !important; }
+.sidebar-custom {
+  background: #1f2937;
+  width: 240px;
+}
+
+.custom-link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-link:hover {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+}
 </style>
