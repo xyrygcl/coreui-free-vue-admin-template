@@ -1,4 +1,4 @@
-import {
+iimport {
   cibFacebook,
   cibTwitter,
   cibLinkedin,
