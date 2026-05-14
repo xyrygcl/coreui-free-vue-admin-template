@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useSidebarStore } from '@/stores/sidebar.js'
 
 const sidebar = useSidebarStore()
@@ -15,7 +15,6 @@ const headerClassNames = ref('mb-4 p-0 shadow-sm')
 
       <h3 class="m-0">沃转课</h3>
 
-      <!-- 右上角铃铛 -->
       <CNav class="d-flex align-items-center">
         <CNavItem>
           <CNavLink href="#">
