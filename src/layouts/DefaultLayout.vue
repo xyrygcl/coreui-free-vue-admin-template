@@ -21,7 +21,7 @@ import AppSidebar from '@/components/AppSidebar.vue'
   min-height: 100vh;
   width: 100%;
   background: #f0f2f5;
-  overflow-x: hidden;
+  overflow: hidden; /* 防止子元素撑出滚动条 */
 }
 
 .wrapper {
@@ -30,8 +30,8 @@ import AppSidebar from '@/components/AppSidebar.vue'
   flex-direction: column;
   min-width: 0;
   background: #ffffff;
-  overflow-x: hidden;
-  min-height: 100vh;  /* 确保撑满高度 */
+  min-height: 100vh; /* 与侧边栏等高 */
+  overflow-y: auto;  /* 内容滚动 */
 }
 
 .body {
@@ -39,7 +39,6 @@ import AppSidebar from '@/components/AppSidebar.vue'
   padding: 24px;
   background: #ffffff;
   color: #333333;
-  overflow-x: hidden;
 }
 
 @media (max-width: 991px) {
