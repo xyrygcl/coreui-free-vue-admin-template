@@ -6,58 +6,28 @@ import autoprefixer from 'autoprefixer'
 export default defineConfig(() => {
   return {
     plugins: [vue()],
-
     base: './',
-
     css: {
       postcss: {
-        plugins: [
-          autoprefixer({}),
-        ],
+        plugins: [autoprefixer()],
       },
     },
-
     resolve: {
       alias: [
-        {
-          find: /^~(.*)$/,
-          replacement: '$1',
-        },
-        {
-          find: '@/',
-          replacement: `${path.resolve(__dirname, 'src')}/`,
-        },
-        {
-          find: '@',
-          replacement: path.resolve(__dirname, './src'),
-        },
+        { find: /^~(.*)$/, replacement: '$1' },
+        { find: '@/', replacement: `${path.resolve(__dirname, 'src')}/` },
+        { find: '@', replacement: path.resolve(__dirname, 'src') },
       ],
-
-      extensions: [
-        '.mjs',
-        '.js',
-        '.ts',
-        '.jsx',
-        '.tsx',
-        '.json',
-        '.vue',
-        '.scss',
-      ],
+      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.scss'],
     },
-
     server: {
-      host: '0.0.0.0',
       port: 3000,
-
-      proxy: {
-        // https://vitejs.dev/config/server-options.html
-      },
+      host: '0.0.0.0', // Railway 外网可访问
     },
-
     preview: {
       host: '0.0.0.0',
-      port: process.env.PORT || 8080,
-      allowedHosts: true,
+      port: process.env.PORT || 3000,
+      allowedHosts: ['.railway.app'], // 允许 Railway 子域名访问
     },
   }
 })
