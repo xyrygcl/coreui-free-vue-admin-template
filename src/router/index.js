@@ -8,13 +8,9 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/upload',   // 改为 upload 页面
+        redirect: '/upload',   // 默认跳转到上传页面
       },
-      {
-        path: 'dashboard',
-        name: '主页',
-        component: () => import('@/views/dashboard/Dashboard.vue'),
-      },
+      // 删除 dashboard 路由（主页）
       {
         path: 'upload',
         name: '立即上传',
