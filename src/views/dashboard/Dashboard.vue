@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <CContainer fluid class="bg-white p-4">
@@ -13,7 +12,5 @@
 </template>
 
 <style scoped>
-.bg-white {
-  background-color: #ffffff;
-}
+.bg-white { background-color: #ffffff; }
 </style>
