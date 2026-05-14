@@ -12,7 +12,7 @@ const routes = [
       {
         path: 'dashboard',
         name: '主页',
-        component: () => import('@/views/dashboard/App.vue'),
+        component: () => import('@/views/dashboard/Dashboard.vue'),
       },
 
       {
