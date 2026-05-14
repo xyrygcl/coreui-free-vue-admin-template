@@ -31,14 +31,7 @@ const headerClassNames = ref(
         沃转课
       </h3>
 
-      <!-- 右侧铃铛 -->
-      <CNav class="header-right">
-        <CNavItem>
-          <CNavLink href="#">
-            <CIcon icon="cil-bell" size="lg" />
-          </CNavLink>
-        </CNavItem>
-      </CNav>
+      <!-- 右侧铃铛已删除 -->
     </CContainer>
   </CHeader>
 </template>
@@ -76,7 +69,7 @@ const headerClassNames = ref(
   color: white;
 }
 
-/* 右侧区域 */
+/* 右侧区域（保留样式，即使已无内容） */
 .header-right {
   margin-left: auto;
 }
