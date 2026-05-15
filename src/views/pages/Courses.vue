@@ -163,7 +163,7 @@ onMounted(() => {
             class="download-btn"
             @click="downloadVideo(video)"
           >
-            下载
+            在线播放
           </button>
 
           <button
