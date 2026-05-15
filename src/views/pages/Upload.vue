@@ -113,12 +113,6 @@ const uploadFile = async () => {
         headers: {
           'Content-Type': 'multipart/form-data',
 
-          /*
-          |--------------------------------------------------------------------------
-          | token 预留
-          |--------------------------------------------------------------------------
-          */
-
           Authorization: token
             ? `Bearer ${token}`
             : '',
@@ -195,17 +189,36 @@ const uploadFile = async () => {
 
     <div class="upload-card">
 
-      <!-- 文件选择 -->
+      <!-- 按钮区域 -->
 
-      <label class="upload-select">
-        选择文件
+      <div class="upload-actions">
 
-        <input
-          type="file"
-          accept=".ppt,.pptx,.pdf"
-          @change="handleFileChange"
-        />
-      </label>
+        <!-- 文件选择 -->
+
+        <label class="upload-select">
+          选择文件
+
+          <input
+            type="file"
+            accept=".ppt,.pptx,.pdf"
+            @change="handleFileChange"
+          />
+        </label>
+
+        <!-- 上传按钮 -->
+
+        <button
+          class="upload-btn"
+          :disabled="uploading"
+          @click="uploadFile"
+        >
+          {{
+            uploading
+              ? '上传中...'
+              : '开始上传'
+          }}
+        </button>
+      </div>
 
       <!-- 文件信息 -->
 
@@ -228,20 +241,6 @@ const uploadFile = async () => {
           MB
         </div>
       </div>
-
-      <!-- 上传按钮 -->
-
-      <button
-        class="upload-btn"
-        :disabled="uploading"
-        @click="uploadFile"
-      >
-        {{
-          uploading
-            ? '上传中...'
-            : '开始上传'
-        }}
-      </button>
 
       <!-- 上传进度 -->
 
@@ -311,6 +310,25 @@ const uploadFile = async () => {
   padding: 32px;
 }
 
+/*
+|--------------------------------------------------------------------------
+| 按钮区域
+|--------------------------------------------------------------------------
+*/
+
+.upload-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/*
+|--------------------------------------------------------------------------
+| 选择文件
+|--------------------------------------------------------------------------
+*/
+
 .upload-select {
   display: inline-flex;
   align-items: center;
@@ -338,6 +356,12 @@ const uploadFile = async () => {
   display: none;
 }
 
+/*
+|--------------------------------------------------------------------------
+| 文件信息
+|--------------------------------------------------------------------------
+*/
+
 .file-info {
   margin-top: 24px;
 
@@ -359,9 +383,13 @@ const uploadFile = async () => {
   font-size: 14px;
 }
 
-.upload-btn {
-  margin-top: 24px;
+/*
+|--------------------------------------------------------------------------
+| 上传按钮
+|--------------------------------------------------------------------------
+*/
 
+.upload-btn {
   background: #10b981;
   color: white;
 
@@ -388,6 +416,12 @@ const uploadFile = async () => {
   cursor: not-allowed;
 }
 
+/*
+|--------------------------------------------------------------------------
+| 上传进度
+|--------------------------------------------------------------------------
+*/
+
 .progress-wrapper {
   margin-top: 24px;
 }
@@ -413,6 +447,12 @@ const uploadFile = async () => {
   transition: width 0.2s;
 }
 
+/*
+|--------------------------------------------------------------------------
+| 提示信息
+|--------------------------------------------------------------------------
+*/
+
 .success-message {
   margin-top: 24px;
 
@@ -435,5 +475,23 @@ const uploadFile = async () => {
   padding: 14px 18px;
 
   border-radius: 10px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| 移动端
+|--------------------------------------------------------------------------
+*/
+
+@media (max-width: 768px) {
+  .upload-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .upload-select,
+  .upload-btn {
+    width: 100%;
+  }
 }
 </style>
