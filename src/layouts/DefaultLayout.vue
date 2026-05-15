@@ -52,12 +52,21 @@ import AppSidebar from '@/components/AppSidebar.vue'
 .body {
   flex: 1;
 
-  padding: 24px;
+  padding: 32px 40px;
 
   background: #111827;
   color: #ffffff;
 
   overflow-x: hidden;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* 页面内容容器 */
+.body > * {
+  width: 100%;
+  max-width: 1200px;
 }
 
 /* 移动端 */
@@ -67,7 +76,7 @@ import AppSidebar from '@/components/AppSidebar.vue'
   }
 
   .body {
-    padding: 16px;
+    padding: 20px 16px;
   }
 }
 </style>
